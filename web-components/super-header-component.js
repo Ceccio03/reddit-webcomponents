@@ -1,16 +1,15 @@
-class SuperHeaderComponent extends HTMLElement{
+class SuperHeaderComponent extends HTMLElement {
 
-    constructor(){
+    constructor() {
         super();
         this.attachShadow({mode: 'open'});
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.render();
     }
 
-    render(){
-
+    render() {
         this.shadowRoot.innerHTML = '';
         const style = document.createElement('style');
         style.innerHTML = `h1{color: ${this.getAttribute('title-color') || 'green'}}`;
@@ -21,6 +20,5 @@ class SuperHeaderComponent extends HTMLElement{
         this.shadowRoot.appendChild(h1);
     }
 }
-
 customElements.define('super-header', SuperHeaderComponent);
 

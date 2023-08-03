@@ -1,21 +1,21 @@
-class PostCardComponent extends HTMLElement{
+class PostCardComponent extends HTMLElement {
 
-    constructor(){
+    constructor() {
         super();
         this.attachShadow({mode: 'open'});
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.render();
     }
 
-    render(){
+    render() {
         if (this.post) {
-            console.log(this.post)
+            console.log(this.post);
             
             this.shadowRoot.innerHTML = `
             <style>
-            .card{
+            .card {
                 display: flex;
                 flex-direction: column;
                 background-color: wheat;
@@ -24,30 +24,25 @@ class PostCardComponent extends HTMLElement{
                 margin-bottom: 4px;
             }
             
-            .card-title{
+            .card-title {
                 font-size: x-large;
                 font-weight: bold;
             }
-            
-            
             </style>
-            `
+            `;
 
             this.shadowRoot.innerHTML += `
             
             <div class="card">
-
-             <span class="card-title">${this.post.data.title}</span>
-             <span class="card-author">${this.post.data.author}</span>
-
+                <span class="card-title">${this.post.data.title}</span>
+                <span class="card-author">${this.post.data.author}</span>
                 <div class="card-details">
                     <span class="card-detail">${this.post.data.created}</span>
                     <a class="card-detail" href="${this.post.data.url}" target="_blank">Vai al post</a>
                     <span class="card-detail" id="post-thumbnail">${this.post.data.thumbnail}</span>
                 </div>
             </div>
-            
-            `
+            `;
 
             const postThumbnail = this.shadowRoot.getElementById('post-thumbnail');
             const img = document.createElement('img');
@@ -57,6 +52,5 @@ class PostCardComponent extends HTMLElement{
         }
     }
 }
-
 customElements.define('post-card', PostCardComponent);
 

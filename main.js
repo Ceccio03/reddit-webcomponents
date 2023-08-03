@@ -4,5 +4,4 @@ fetch('https://www.reddit.com/r/aww/new.json')
     const data = res.data;
     const posts = data.children;
     console.log(posts);
-})
-
+});

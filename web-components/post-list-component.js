@@ -1,12 +1,12 @@
-class PostsListComponent extends HTMLElement{
+class PostsListComponent extends HTMLElement {
 
-    constructor(){
+    constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.postsArray = [];
     }
 
-    connectedCallback(){
+    connectedCallback() {
         fetch('https://www.reddit.com/r/aww/new.json')
         .then(resp => resp.json())
         .then(res => {
@@ -19,9 +19,8 @@ class PostsListComponent extends HTMLElement{
     }
 
 
-    render(posts){
-
-        console.log(posts)
+    render(posts) {
+        console.log(posts);
 
         this.shadowRoot.innerHTML = '';
         const mainContainer = document.createElement('div');
@@ -29,17 +28,12 @@ class PostsListComponent extends HTMLElement{
 
         for (let i = 0; i < posts.length; i++) {
             const post = posts[i];
-
             const cardComponent = document.createElement('post-card');
 
             cardComponent.post = post;
-
             mainContainer.appendChild(cardComponent);
-            
         }
     }
-
 }
-
 customElements.define('posts-list', PostsListComponent);
 

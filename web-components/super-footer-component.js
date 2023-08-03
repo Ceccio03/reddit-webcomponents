@@ -1,20 +1,18 @@
-class SuperFooterComponent extends HTMLElement{
+class SuperFooterComponent extends HTMLElement {
 
-    constructor(){
+    constructor() {
         super();
         this.attachShadow({mode: 'open'});
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.render();
     }
 
-    render(){
-
+    render() {
         this.shadowRoot.innerHTML = `
-        
         <p>©Reddit Posts List 2023</p>
-        `
+        `;
     }
 }
 
